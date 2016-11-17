@@ -7,6 +7,7 @@ RUN \
  go build -o /srv/anonymous && \
  rm -rf /go/src/*
 
+COPY .env /srv/.env
 
 WORKDIR /srv
 
