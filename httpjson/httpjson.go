@@ -2,7 +2,7 @@ package httpjson
 
 import (
 	"encoding/json"
-	"fmt"
+	"log"
 	"net/http"
 	"net/url"
 	"strings"
@@ -29,7 +29,7 @@ func PostJson(method string, params []Param, target interface{}) error {
 	urlStr := baseUrl + method
 	res, err := http.Post(urlStr, "application/x-www-form-urlencoded", strings.NewReader(form.Encode()))
 	if err != nil {
-		fmt.Println(err)
+		log.Println(err)
 	}
 	defer res.Body.Close()
 

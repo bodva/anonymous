@@ -2,7 +2,6 @@ package main
 
 import (
 	"flag"
-	"fmt"
 	"github.com/bodva/anonymous/httpjson"
 	"github.com/joho/godotenv"
 	"log"
@@ -42,9 +41,9 @@ func main() {
 	}
 	token = os.Getenv("TOKEN")
 
-	fmt.Println("Oh, I remember Member Berries!")
+	log.Println("Oh, I remember Member Berries!")
 	var method string
-	fmt.Println(token)
+	log.Println(token)
 
 	action := flag.String("action", "message", "as string ex. \"message\"")
 	channel := flag.String("channel", "", "as string")
@@ -56,9 +55,9 @@ func main() {
 	method = "api.test"
 	err = httpjson.GetJson(method, &r)
 	if err != nil {
-		fmt.Println(err)
+		log.Println(err)
 	}
-	fmt.Println("Slack API status response:", r.Status)
+	log.Println("Slack API status response:", r.Status)
 
 	if r.Status {
 		u := User{}
@@ -67,12 +66,12 @@ func main() {
 		params := []httpjson.Param{
 			{Key: "token", Value: token},
 		}
-		// fmt.Println(params)
+		// log.Println(params)
 		httpjson.PostJson(method, params, &u)
-		fmt.Println("bot info:", u)
+		log.Println("bot info:", u)
 		switch *action {
 		case "message":
-			fmt.Println("Channel:", *channel, "As User:", *asUser, "Message:", *message)
+			log.Println("Channel:", *channel, "As User:", *asUser, "Message:", *message)
 			m := MessageRespose{}
 			method = "chat.postMessage"
 			params = []httpjson.Param{
@@ -82,7 +81,7 @@ func main() {
 				{Key: "text", Value: *message},
 			}
 			httpjson.PostJson(method, params, &m)
-			fmt.Println("message response:", m)
+			log.Println("message response:", m)
 		}
 
 	}
