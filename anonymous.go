@@ -41,15 +41,15 @@ func main() {
 	}
 	token = os.Getenv("TOKEN")
 
-	log.Println("Oh, I remember Member Berries!")
-	var method string
-	log.Println(token)
-
 	action := flag.String("action", "message", "as string ex. \"message\"")
 	channel := flag.String("channel", "", "as string")
 	asUser := flag.String("as_user", "1", "as int ( 0 from user 1 from @slackbot")
 	message := flag.String("message", "", "as string")
 	flag.Parse()
+
+	log.Println("Oh, I remember Member Berries!")
+	var method string
+	log.Println(token)
 
 	r := httpjson.Response{}
 	method = "api.test"
