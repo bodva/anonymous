@@ -4,6 +4,8 @@ import (
 	"flag"
 	"fmt"
 	"github.com/bodva/anonymous/httpjson"
+	"github.com/joho/godotenv"
+	"log"
 	"os"
 )
 
@@ -34,6 +36,10 @@ type MessageRespose struct {
 }
 
 func main() {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
 	token = os.Getenv("TOKEN")
 
 	fmt.Println("Oh, I remember Member Berries!")
@@ -48,7 +54,7 @@ func main() {
 
 	r := httpjson.Response{}
 	method = "api.test"
-	err := httpjson.GetJson(method, &r)
+	err = httpjson.GetJson(method, &r)
 	if err != nil {
 		fmt.Println(err)
 	}
