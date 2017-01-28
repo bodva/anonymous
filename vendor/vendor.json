@@ -1,0 +1,13 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "h9EtLdks5ODcJVIA+j4qmrW2/mw=",
+			"path": "github.com/joho/godotenv",
+			"revision": "726cc8b906e3d31c70a9671c90a13716a8d3f50d",
+			"revisionTime": "2016-12-16T23:05:37Z"
+		}
+	],
+	"rootPath": "github.com/bodva/anonymous"
+}
